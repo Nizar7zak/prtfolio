@@ -15,7 +15,7 @@ export function ProjectsSection() {
           href="https://github.com/Nizar7zak"
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded bg-white px-4 py-2 font-mono text-[12px] font-medium text-black transition hover:bg-ide-text"
+          className="rounded bg-ide-button-bg px-4 py-2 font-mono text-[12px] font-medium text-ide-button-text transition hover:opacity-90"
         >
           <Kw>View</Kw> More
         </a>

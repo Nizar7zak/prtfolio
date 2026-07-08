@@ -10,7 +10,7 @@ export function HeroSection() {
   return (
     <section id="about" className="relative mb-12 scroll-mt-16 py-4">
       <motion.div
-        className="relative rounded border border-[#3b82f6]/40 p-6 md:p-8"
+        className="relative rounded border border-ide-accent/40 p-6 md:p-8"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-64px" }}
@@ -41,12 +41,12 @@ export function HeroSection() {
           <a
             href="/cv.pdf"
             download="Nezar_Zakout_Resume.pdf"
-            className="inline-flex w-fit overflow-hidden border border-[#3a3a3a] font-mono text-[12px] transition hover:border-[#555]"
+            className="inline-flex w-fit overflow-hidden border border-ide-muted font-mono text-[12px] transition hover:border-ide-accent"
           >
-            <span className="bg-[#1e1e1e] px-4 py-2.5 text-ide-property">
+            <span className="bg-ide-tab-bg px-4 py-2.5 text-ide-property">
               Download CV
             </span>
-            <span className="flex items-center justify-center border-l border-[#3a3a3a] bg-[#2a2a2a] px-3 py-2.5 text-ide-keyword">
+            <span className="flex items-center justify-center border-l border-ide-muted bg-ide-card px-3 py-2.5 text-ide-keyword">
               <FiDownload className="h-4 w-4" />
             </span>
           </a>

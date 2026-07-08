@@ -59,7 +59,7 @@ export function RecommendationsSection() {
                 href={rec.linkedIn}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shrink-0 border border-[#3a3a3a] p-0.5 transition hover:border-ide-accent"
+                className="shrink-0 border border-ide-muted p-0.5 transition hover:border-ide-accent"
                 aria-label={`${rec.name} on LinkedIn`}
               >
                 <Image
@@ -75,7 +75,7 @@ export function RecommendationsSection() {
                 href={rec.linkedIn}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group min-w-0 flex-1 border border-[#3a3a3a] p-5 transition hover:border-ide-accent sm:p-6"
+                className="group min-w-0 flex-1 border border-ide-muted p-5 transition hover:border-ide-accent sm:p-6"
               >
                 <p className="mb-6 whitespace-pre-line font-mono text-[12px] leading-[1.75] text-ide-string">
                   &ldquo;{rec.quote}&rdquo;

@@ -43,7 +43,7 @@ function WireframeTriangle() {
   return (
     <motion.svg
       viewBox="0 0 200 180"
-      className="h-36 w-40 text-[#2a2a2a] md:h-44 md:w-48"
+      className="h-36 w-40 text-ide-muted md:h-44 md:w-48"
       fill="none"
       aria-hidden
       initial={{ opacity: 0 }}
@@ -123,14 +123,14 @@ export function SkillsSection() {
 
       <SectionHeading className="mb-6">My Skills</SectionHeading>
 
-      <Stagger className="grid grid-cols-2 border border-[#2a2a2a] sm:grid-cols-4 lg:grid-cols-7">
+      <Stagger className="grid grid-cols-2 border border-ide-border sm:grid-cols-4 lg:grid-cols-7">
         {skillCards.map((skill) => {
           const Icon = ICONS[skill.icon];
           return (
             <StaggerItem key={skill.name}>
               <motion.div
-                className="grid min-h-[110px] grid-rows-[28px_1fr_28px] border-b border-r border-[#2a2a2a] bg-[#111111] sm:min-h-[120px]"
-                whileHover={{ scale: 1.02, backgroundColor: "#1a1a1a" }}
+                className="grid min-h-[110px] grid-rows-[28px_1fr_28px] border-b border-r border-ide-border bg-ide-bg sm:min-h-[120px]"
+                whileHover={{ scale: 1.02, backgroundColor: "var(--ide-card-hover)" }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
                 <span className="truncate px-3 pt-3 font-mono text-[11px] text-ide-type">
@@ -155,7 +155,7 @@ export function SkillsSection() {
       </Stagger>
 
       <Reveal delay={0.3}>
-        <div className="relative overflow-hidden bg-[#141414] px-6 py-14 md:px-10 md:py-20">
+        <div className="relative overflow-hidden bg-ide-sidebar px-6 py-14 md:px-10 md:py-20">
           <span
             aria-hidden
             className="pointer-events-none absolute left-4 top-2 select-none font-mono text-[120px] leading-none text-white/[0.04] md:left-8 md:text-[180px]"

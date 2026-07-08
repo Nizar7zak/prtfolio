@@ -11,6 +11,7 @@ import {
 import { MdGTranslate } from "react-icons/md";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { personalInfo } from "@/data/portfolio";
+import { ThemeDropdown } from "@/components/ide/ThemeDropdown";
 import { Fn, Prop, Str, Ty } from "@/components/ui/IdeSyntax";
 
 export function Clock() {
@@ -35,21 +36,48 @@ export function Clock() {
   return <span className="text-ide-property">My time: {time || "--:-- --"}</span>;
 }
 
-export function TopBar() {
+export type AppTab = "portfolio" | "bouncegame";
+
+export function TopBar({
+  activeTab,
+  onTabChange,
+}: {
+  activeTab: AppTab;
+  onTabChange: (tab: AppTab) => void;
+}) {
   return (
-    <div className="sticky top-0 z-50 flex h-11 items-center justify-between border-b border-ide-border bg-[#0a0a0a] px-4 font-mono text-[13px]">
+    <div className="sticky top-0 z-50 flex h-11 items-center justify-between border-b border-ide-border bg-ide-topbar px-4 font-mono text-[13px]">
       <div className="flex h-full items-center gap-0">
-        <button className="relative flex h-full items-center gap-2 border-b-2 border-white px-4">
+        <button
+          type="button"
+          onClick={() => onTabChange("portfolio")}
+          className={`relative flex h-full items-center gap-2 px-4 transition ${
+            activeTab === "portfolio"
+              ? "border-b-2 border-ide-text"
+              : "text-ide-syntax-comment hover:text-ide-text"
+          }`}
+        >
           <Str>nizar.info</Str>
-          <span className="text-ide-syntax-comment hover:text-ide-text">×</span>
+          {activeTab === "portfolio" && (
+            <span className="text-ide-syntax-comment hover:text-ide-text">×</span>
+          )}
         </button>
-        <button className="flex h-full items-center px-4 text-ide-syntax-comment hover:text-ide-text">
-          Work.done
+        <button
+          type="button"
+          onClick={() => onTabChange("bouncegame")}
+          className={`flex h-full items-center px-4 transition ${
+            activeTab === "bouncegame"
+              ? "border-b-2 border-ide-text text-ide-text"
+              : "text-ide-syntax-comment hover:text-ide-text"
+          }`}
+        >
+          <Ty>BounceGame</Ty>
         </button>
       </div>
 
-      <div className="flex items-center gap-4 text-[12px]">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#1a3a2a] px-2.5 py-0.5 text-ide-type">
+      <div className="flex items-center gap-3 text-[12px] sm:gap-4">
+        <ThemeDropdown />
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-ide-badge-bg px-2.5 py-0.5 text-ide-type">
           <span className="h-1.5 w-1.5 rounded-full bg-ide-type" />
           Open to work
         </span>
@@ -57,7 +85,7 @@ export function TopBar() {
           <span className="h-1 w-1 rounded-full bg-ide-syntax-comment" />
           <Str>{personalInfo.location}</Str>
         </span>
-        <span className="inline-flex items-center gap-1.5 text-ide-syntax-comment">
+        <span className="hidden items-center gap-1.5 text-ide-syntax-comment md:inline-flex">
           <span className="h-1 w-1 rounded-full bg-ide-syntax-comment" />
           <Clock />
         </span>
@@ -68,12 +96,12 @@ export function TopBar() {
 
 export function Sidebar() {
   return (
-    <aside className="hidden h-full w-[260px] shrink-0 flex-col justify-between border-r border-[#2a2a2a] bg-[#121212] font-mono md:flex">
+    <aside className="hidden h-full w-[260px] shrink-0 flex-col justify-between border-r border-ide-border bg-ide-sidebar font-mono md:flex">
       {/* Top block */}
       <div className="flex flex-col gap-8 px-5 pt-6">
         {/* Profile */}
         <div className="flex items-center gap-3">
-          <div className="shrink-0 border border-[#3a3a3a] p-0.5">
+          <div className="shrink-0 border border-ide-muted p-0.5">
             <Image
               src="/profile.jpg"
               alt={`${personalInfo.name} ${personalInfo.lastName}`}
@@ -134,12 +162,12 @@ export function Sidebar() {
         <a
           href="/cv.pdf"
           download="Nezar_Zakout_Resume.pdf"
-          className="inline-flex w-fit overflow-hidden border border-[#3a3a3a] text-[12px] transition hover:border-[#555]"
+          className="inline-flex w-fit overflow-hidden border border-ide-muted text-[12px] transition hover:border-ide-accent"
         >
-          <span className="bg-[#1a1a1a] px-4 py-2.5 text-ide-property">
+          <span className="bg-ide-tab-bg px-4 py-2.5 text-ide-property">
             Download CV
           </span>
-          <span className="flex items-center justify-center border-l border-[#3a3a3a] bg-[#2a2a2a] px-3 py-2.5 text-ide-keyword">
+          <span className="flex items-center justify-center border-l border-ide-muted bg-ide-card px-3 py-2.5 text-ide-keyword">
             <FiDownload className="h-4 w-4" />
           </span>
         </a>
@@ -149,7 +177,7 @@ export function Sidebar() {
       <div className="flex flex-col items-center gap-5 px-5 pb-6">
         <a
           href={`mailto:${personalInfo.email}`}
-          className="flex w-full items-center justify-center bg-white py-3.5 text-[13px] font-medium text-black transition hover:bg-[#e5e5e5]"
+          className="flex w-full items-center justify-center bg-ide-button-bg py-3.5 text-[13px] font-medium text-ide-button-text transition hover:opacity-90"
         >
           Contact me
         </a>
@@ -160,7 +188,7 @@ export function Sidebar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="flex h-9 w-9 items-center justify-center rounded-sm border border-[#3a3a3a] bg-[#1a1a1a] text-[#9ca3af] transition hover:border-[#555] hover:text-white"
+            className="flex h-9 w-9 items-center justify-center rounded-sm border border-ide-muted bg-ide-tab-bg text-ide-comment transition hover:border-ide-accent hover:text-ide-text"
           >
             <FaLinkedinIn className="h-4 w-4" />
           </a>
@@ -169,7 +197,7 @@ export function Sidebar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="flex h-9 w-9 items-center justify-center rounded-sm border border-[#3a3a3a] bg-[#1a1a1a] text-[#9ca3af] transition hover:border-[#555] hover:text-white"
+            className="flex h-9 w-9 items-center justify-center rounded-sm border border-ide-muted bg-ide-tab-bg text-ide-comment transition hover:border-ide-accent hover:text-ide-text"
           >
             <FaGithub className="h-4 w-4" />
           </a>
@@ -202,7 +230,7 @@ export function IndexPanel({ activeSection }: { activeSection?: string }) {
   if (!mounted) return null;
 
   return (
-    <aside className="hidden w-[160px] shrink-0 flex-col border-l border-ide-border bg-[#0a0a0a] p-6 lg:flex">
+    <aside className="hidden w-[160px] shrink-0 flex-col border-l border-ide-border bg-ide-topbar p-6 lg:flex">
       <p className="mb-4 font-mono text-[12px] text-ide-syntax-comment">\\ Index</p>
       <nav className="relative flex flex-col gap-3">
         {INDEX_LINKS.map((link) => {
@@ -220,14 +248,13 @@ export function IndexPanel({ activeSection }: { activeSection?: string }) {
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
-              <motion.span
-                animate={{
-                  color: active ? "hsl(var(--ide-property))" : "#6a9955",
-                }}
-                transition={{ duration: 0.3 }}
+              <span
+                className={
+                  active ? "text-ide-property" : "text-ide-syntax-comment"
+                }
               >
                 {link.label}
-              </motion.span>
+              </span>
             </a>
           );
         })}

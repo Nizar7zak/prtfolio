@@ -36,7 +36,7 @@ export function ProjectCard({
       whileHover={{ y: -4 }}
       transition={{ type: "spring", stiffness: 400, damping: 30 }}
     >
-      <div className="relative h-44 w-full overflow-hidden bg-[#0a0a0a]">
+      <div className="relative h-44 w-full overflow-hidden bg-ide-topbar">
         {showIframe ? (
           <div className="pointer-events-none absolute left-0 top-0 h-[400%] w-[400%] origin-top-left scale-[0.25]">
             <iframe

@@ -1,19 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  /* IDE dark theme colors */
-  --ide-bg: #111111;
-  --ide-sidebar: #141414;
+  /* IDE UI */
+  --ide-bg: #1e1e1e;
+  --ide-sidebar: #252526;
+  --ide-topbar: #181818;
   --ide-border: #2a2a2a;
-  --ide-line-num: #3f3f3f;
+  --ide-line-num: #858585;
   --ide-comment: #5c6370;
   --ide-text: #d4d4d4;
-  --ide-accent: #4fc1ff;
+  --ide-accent: #007acc;
   --ide-green: #4ec9b0;
-  --ide-tab-bg: #1a1a1a;
-  --ide-tab-act: #111111;
+  --ide-tab-bg: #2d2d2d;
+  --ide-tab-act: #1e1e1e;
+  --ide-card: #252526;
+  --ide-card-hover: #2a2a2a;
+  --ide-muted: #3a3a3a;
+  --ide-scroll-thumb: #424242;
+  --ide-scroll-thumb-hover: #5c6370;
+  --ide-badge-bg: #1a3a2a;
+  --ide-button-bg: #ffffff;
+  --ide-button-text: #000000;
 
-  /* VS Code Dark+ syntax */
+  /* Syntax */
   --ide-keyword: #569cd6;
   --ide-string: #ce9178;
   --ide-function: #dcdcaa;
@@ -21,11 +30,13 @@
   --ide-number: #b5cea8;
   --ide-property: #9cdcfe;
   --ide-syntax-comment: #6a9955;
+  --ide-control-keyword: #c586c0;
 }
 
 @theme inline {
   --color-ide-bg: var(--ide-bg);
   --color-ide-sidebar: var(--ide-sidebar);
+  --color-ide-topbar: var(--ide-topbar);
   --color-ide-border: var(--ide-border);
   --color-ide-line-num: var(--ide-line-num);
   --color-ide-comment: var(--ide-comment);
@@ -34,6 +45,12 @@
   --color-ide-green: var(--ide-green);
   --color-ide-tab-bg: var(--ide-tab-bg);
   --color-ide-tab-act: var(--ide-tab-act);
+  --color-ide-card: var(--ide-card);
+  --color-ide-card-hover: var(--ide-card-hover);
+  --color-ide-muted: var(--ide-muted);
+  --color-ide-badge-bg: var(--ide-badge-bg);
+  --color-ide-button-bg: var(--ide-button-bg);
+  --color-ide-button-text: var(--ide-button-text);
   --color-ide-keyword: var(--ide-keyword);
   --color-ide-string: var(--ide-string);
   --color-ide-function: var(--ide-function);
@@ -41,16 +58,13 @@
   --color-ide-number: var(--ide-number);
   --color-ide-property: var(--ide-property);
   --color-ide-syntax-comment: var(--ide-syntax-comment);
+  --color-ide-control-keyword: var(--ide-control-keyword);
   --font-mono: var(--font-jetbrains-mono);
   --font-sans: var(--font-inter);
 }
 
 * {
   @apply antialiased;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 html {
@@ -64,10 +78,10 @@ body {
   color: var(--ide-text);
 }
 
-/* IDE scrollbar — scoped to editor panel */
+/* IDE scrollbar */
 .editor-scroll {
   scrollbar-width: thin;
-  scrollbar-color: #3f3f3f transparent;
+  scrollbar-color: var(--ide-scroll-thumb) transparent;
 }
 
 .editor-scroll::-webkit-scrollbar {
@@ -79,12 +93,12 @@ body {
 }
 
 .editor-scroll::-webkit-scrollbar-thumb {
-  background-color: #3f3f3f;
+  background-color: var(--ide-scroll-thumb);
   border-radius: 999px;
 }
 
 .editor-scroll::-webkit-scrollbar-thumb:hover {
-  background-color: #5c6370;
+  background-color: var(--ide-scroll-thumb-hover);
 }
 
 .editor-scroll::-webkit-scrollbar-corner {

@@ -25,7 +25,7 @@ function yearLabel(exp: (typeof experiences)[number]) {
 
 function CompanyLogo({ src, alt }: { src: string; alt: string }) {
   return (
-    <span className="inline-flex h-4 w-4 shrink-0 items-center justify-center overflow-hidden rounded-[2px] border border-[#3a3a3a] bg-[#1a1a1a]">
+    <span className="inline-flex h-4 w-4 shrink-0 items-center justify-center overflow-hidden rounded-[2px] border border-ide-muted bg-ide-tab-bg">
       <Image
         src={src}
         alt={alt}
@@ -42,7 +42,7 @@ export function ExperienceSection() {
     <section id="experience" className="mb-16 scroll-mt-16">
       <HtmlComment label="Experience section" />
 
-      <Stagger className="divide-y divide-[#2a2a2a]">
+      <Stagger className="divide-y divide-ide-border">
         {experiences.map((exp) => (
           <StaggerItem key={exp.id}>
             <motion.div
