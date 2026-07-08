@@ -76,7 +76,7 @@ export function ProjectCard({
           aria-label={`Open ${name}`}
         />
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-center justify-center gap-2 bg-gradient-to-t from-black/80 to-transparent py-3 opacity-0 transition group-hover:opacity-100">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-center justify-center gap-2 bg-gradient-to-t from-black/80 to-transparent py-3 opacity-100 transition sm:opacity-0 sm:group-hover:opacity-100 touch-reveal">
           <FaExternalLinkAlt className="h-3 w-3 text-ide-property" />
           <span className="font-mono text-[11px] text-ide-property">Open live site</span>
         </div>

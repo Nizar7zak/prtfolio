@@ -13,6 +13,8 @@ import {
   TopBar,
   Sidebar,
   IndexPanel,
+  MobileSidebarDrawer,
+  MobileSectionNav,
   SECTION_IDS,
   type AppTab,
 } from "@/components/ide/Shell";
@@ -26,6 +28,7 @@ export default function Home() {
   const [lineCount, setLineCount] = useState(120);
   const [activeSection, setActiveSection] = useState("about");
   const [activeTab, setActiveTab] = useState<AppTab>("portfolio");
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   useEffect(() => {
     if (activeTab !== "portfolio") return;
@@ -44,7 +47,7 @@ export default function Home() {
       container.scrollTop;
 
     const updateActiveSection = () => {
-      const marker = container.scrollTop + 96;
+      const marker = container.scrollTop + (window.innerWidth < 1024 ? 132 : 96);
 
       let current = SECTION_IDS[0];
       for (const id of SECTION_IDS) {
@@ -84,8 +87,20 @@ export default function Home() {
   return (
     <ThemeProvider>
       <MotionProvider>
-        <div className="flex h-screen flex-col overflow-hidden bg-ide-bg font-mono text-ide-text">
-          <TopBar activeTab={activeTab} onTabChange={setActiveTab} />
+        <div className="flex h-[100dvh] flex-col overflow-hidden bg-ide-bg font-mono text-ide-text">
+          <TopBar
+            activeTab={activeTab}
+            onTabChange={setActiveTab}
+            onMenuOpen={() => setMobileNavOpen(true)}
+          />
+          <MobileSidebarDrawer
+            open={mobileNavOpen}
+            onClose={() => setMobileNavOpen(false)}
+          />
+
+          {activeTab === "portfolio" && (
+            <MobileSectionNav activeSection={activeSection} />
+          )}
 
           <div className="flex min-h-0 flex-1">
             <Sidebar />
@@ -109,7 +124,7 @@ export default function Home() {
                 className={`editor-scroll min-w-0 flex-1 ${
                   activeTab === "bouncegame"
                     ? "flex flex-col overflow-hidden p-4 md:p-6"
-                    : "overflow-y-auto px-4 py-8 md:px-6"
+                    : "overflow-y-auto px-3 py-6 sm:px-4 sm:py-8 md:px-6"
                 }`}
               >
                 {activeTab === "portfolio" ? (

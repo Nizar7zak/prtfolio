@@ -118,12 +118,12 @@ function WireframeTriangle() {
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="mb-16 scroll-mt-16">
+    <section id="skills" className="mb-16 scroll-mt-20 sm:scroll-mt-16">
       <HtmlComment label="My Skills section" />
 
       <SectionHeading className="mb-6">My Skills</SectionHeading>
 
-      <Stagger className="grid grid-cols-2 border border-ide-border sm:grid-cols-4 lg:grid-cols-7">
+      <Stagger className="grid grid-cols-2 border border-ide-border sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7">
         {skillCards.map((skill) => {
           const Icon = ICONS[skill.icon];
           return (
@@ -155,7 +155,7 @@ export function SkillsSection() {
       </Stagger>
 
       <Reveal delay={0.3}>
-        <div className="relative overflow-hidden bg-ide-sidebar px-6 py-14 md:px-10 md:py-20">
+        <div className="relative overflow-hidden bg-ide-sidebar px-4 py-10 sm:px-6 sm:py-14 md:px-10 md:py-20">
           <span
             aria-hidden
             className="pointer-events-none absolute left-4 top-2 select-none font-mono text-[120px] leading-none text-white/[0.04] md:left-8 md:text-[180px]"
@@ -165,10 +165,10 @@ export function SkillsSection() {
 
           <div className="relative flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div className="relative z-10 max-w-2xl">
-              <p className="font-mono text-2xl text-ide-keyword md:text-[28px]">
+              <p className="font-mono text-xl text-ide-keyword sm:text-2xl md:text-[28px]">
                 Code is easy.
               </p>
-              <p className="mt-3 font-mono text-3xl font-bold leading-[1.15] text-ide-text md:text-[42px]">
+              <p className="mt-3 font-mono text-2xl font-bold leading-[1.15] text-ide-text sm:text-3xl md:text-[42px]">
                 <Fn>Solving problems</Fn>
                 <br />
                 is the <Ty>real skill</Ty>

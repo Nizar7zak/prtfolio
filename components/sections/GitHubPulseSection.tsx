@@ -17,7 +17,7 @@ function cardUrl(path: string) {
 
 export function GitHubPulseSection() {
   return (
-    <section id="github-pulse" className="mb-16 scroll-mt-16 py-4">
+    <section id="github-pulse" className="mb-16 scroll-mt-20 py-4 sm:scroll-mt-16">
       <HtmlComment label="GitHub Pulse section" />
 
       <SectionHeading className="mb-6">GitHub Pulse</SectionHeading>

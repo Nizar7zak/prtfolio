@@ -37,7 +37,7 @@ export function EducationSection() {
   return (
     <>
       <HtmlComment label="Education & Awards section" />
-      <section id="education" className="mb-16 scroll-mt-16 py-8">
+      <section id="education" className="mb-16 scroll-mt-20 py-8 sm:scroll-mt-16">
         <SectionHeading className="mb-8 text-2xl">My Education</SectionHeading>
 
         <div className="mb-12 space-y-6">
@@ -63,7 +63,7 @@ export function EducationSection() {
           My Awards
         </SectionHeading>
 
-        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {certBadges.map((badge) => (
             <a
               key={badge.href}
@@ -72,7 +72,7 @@ export function EducationSection() {
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-3 rounded border border-ide-border bg-ide-sidebar p-4 text-center transition hover:border-ide-accent"
             >
-              <div className="relative h-[115px] w-[115px]">
+              <div className="relative mx-auto h-[100px] w-[100px] sm:h-[115px] sm:w-[115px]">
                 <Image
                   src={badge.src}
                   alt={badge.name}

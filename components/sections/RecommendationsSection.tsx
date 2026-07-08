@@ -18,7 +18,7 @@ import {
 
 export function RecommendationsSection() {
   return (
-    <section id="recommendations" className="mb-16 scroll-mt-16 py-4">
+    <section id="recommendations" className="mb-16 scroll-mt-20 py-4 sm:scroll-mt-16">
       <HtmlComment label="Recommendations section" />
 
       <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
@@ -47,8 +47,8 @@ export function RecommendationsSection() {
           return (
             <StaggerItem key={rec.name}>
               <motion.div
-                className={`flex items-center gap-6 md:gap-8 ${
-                  photoLeft ? "flex-row" : "flex-row-reverse"
+                className={`flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:gap-6 md:gap-8 ${
+                  photoLeft ? "sm:flex-row" : "sm:flex-row-reverse"
                 }`}
                 initial={{ opacity: 0, x: photoLeft ? -40 : 40 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -98,7 +98,7 @@ export function RecommendationsSection() {
                   <Cmt>{rec.context}</Cmt>
                 </p>
 
-                <span className="mt-3 inline-flex items-center gap-1.5 font-mono text-[10px] text-ide-property opacity-0 transition group-hover:opacity-100">
+                <span className="touch-reveal mt-3 inline-flex items-center gap-1.5 font-mono text-[10px] text-ide-property opacity-100 transition sm:opacity-0 sm:group-hover:opacity-100">
                   <FaLinkedinIn className="h-3 w-3" />
                   Open profile
                   <FaExternalLinkAlt className="h-2 w-2" />

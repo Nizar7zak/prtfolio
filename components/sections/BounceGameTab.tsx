@@ -183,7 +183,7 @@ export function BounceGameTab() {
 
   return (
     <div className="flex h-full min-h-0 flex-col">
-      <div className="mb-4 flex items-center justify-between">
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-2 sm:mb-4">
         <div>
           <h2 className="font-mono text-lg font-bold">
             <Ty>challenge.nezar</Ty>

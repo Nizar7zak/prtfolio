@@ -8,15 +8,15 @@ import { SemanticText } from "@/components/ui/IdeSyntax";
 
 export function HeroSection() {
   return (
-    <section id="about" className="relative mb-12 scroll-mt-16 py-4">
+    <section id="about" className="relative mb-12 scroll-mt-20 overflow-hidden py-4 sm:scroll-mt-16">
       <motion.div
-        className="relative rounded border border-ide-accent/40 p-6 md:p-8"
+        className="relative rounded border border-ide-accent/40 p-4 sm:p-6 md:p-8"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-64px" }}
         transition={{ duration: 0.7 }}
       >
-        <h1 className="mb-6 max-w-4xl font-mono text-[28px] font-bold leading-tight md:text-[36px]">
+        <h1 className="mb-6 max-w-4xl font-mono text-[22px] font-bold leading-tight sm:text-[28px] md:text-[36px]">
           <span className="text-ide-keyword">
             <ScrambleText>Turning</ScrambleText>
           </span>{" "}
@@ -55,7 +55,7 @@ export function HeroSection() {
 
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-8 left-0 select-none font-mono text-[96px] font-bold leading-none tracking-tight text-white/[0.03] md:text-[140px]"
+        className="pointer-events-none absolute -bottom-8 left-0 select-none font-mono text-[56px] font-bold leading-none tracking-tight text-white/[0.03] sm:text-[96px] md:text-[140px]"
       >
         {personalInfo.name.toUpperCase()}
       </div>

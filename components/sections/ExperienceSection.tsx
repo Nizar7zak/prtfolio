@@ -39,7 +39,7 @@ function CompanyLogo({ src, alt }: { src: string; alt: string }) {
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="mb-16 scroll-mt-16">
+    <section id="experience" className="mb-16 scroll-mt-20 sm:scroll-mt-16">
       <HtmlComment label="Experience section" />
 
       <Stagger className="divide-y divide-ide-border">
@@ -48,7 +48,7 @@ export function ExperienceSection() {
             <motion.div
               whileHover={{ x: 4 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="grid grid-cols-1 items-center gap-2 py-4 font-mono text-[13px] sm:grid-cols-[120px_minmax(0,1fr)_minmax(0,1fr)_100px] sm:gap-6"
+              className="grid grid-cols-1 items-start gap-2 py-4 font-mono text-[13px] sm:grid-cols-2 sm:gap-x-4 sm:gap-y-1 lg:grid-cols-[110px_minmax(0,1fr)_minmax(0,1fr)_90px] lg:items-center lg:gap-6"
             >
               <span>{yearLabel(exp)}</span>
               <span className="text-ide-type">{exp.title}</span>

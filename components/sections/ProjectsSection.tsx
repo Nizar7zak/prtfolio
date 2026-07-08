@@ -7,9 +7,9 @@ import { projects } from "@/data/portfolio";
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="mb-16 scroll-mt-16 py-4">
+    <section id="projects" className="mb-16 scroll-mt-20 py-4 sm:scroll-mt-16">
       <HtmlComment label="Projects section" />
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <SectionHeading className="mb-0">Projects</SectionHeading>
         <a
           href="https://github.com/Nizar7zak"
@@ -21,7 +21,7 @@ export function ProjectsSection() {
         </a>
       </div>
 
-      <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <Stagger className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {projects.map((project) => (
           <StaggerItem key={project.id}>
             <ProjectCard

@@ -47,7 +47,7 @@ export function ThemeDropdown() {
             style={{ background: theme.colors.type }}
           />
         </span>
-        <span className="max-w-[100px] truncate">{theme.name}</span>
+        <span className="hidden max-w-[100px] truncate sm:inline">{theme.name}</span>
         <FiChevronDown
           className={`h-3 w-3 shrink-0 transition ${open ? "rotate-180" : ""}`}
         />
