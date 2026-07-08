@@ -69,14 +69,21 @@ export function BounceGameTab() {
     iframe.focus({ preventScroll: true });
   }, []);
 
+  const sendGameRestart = useCallback(() => {
+    const iframe = iframeRef.current;
+    if (!iframe?.contentWindow) return;
+    iframe.contentWindow.postMessage({ type: "bouncegame:restart" }, "*");
+    iframe.focus({ preventScroll: true });
+  }, []);
+
   const closeScoreOverlay = useCallback(() => {
     setShowScoreOverlay(false);
     setSubmitError("");
     setSubmitSuccess(false);
     setName("");
     setGameScore(null);
-    sendGameStart();
-  }, [sendGameStart]);
+    sendGameRestart();
+  }, [sendGameRestart]);
 
   useEffect(() => {
     sendGameStart();
@@ -88,7 +95,18 @@ export function BounceGameTab() {
         GAME_ORIGINS.some((o) => event.origin === o) ||
         event.origin.endsWith(".vercel.app");
 
-      if (!originOk || event.data?.type !== "bouncegame:complete") return;
+      if (!originOk) return;
+
+      if (event.data?.type === "bouncegame:restart") {
+        setShowScoreOverlay(false);
+        setSubmitSuccess(false);
+        setSubmitError("");
+        setName("");
+        setGameScore(null);
+        return;
+      }
+
+      if (event.data?.type !== "bouncegame:complete") return;
 
       const { elapsedMs, glassBroken: glass, blockCount } = event.data;
       if (
