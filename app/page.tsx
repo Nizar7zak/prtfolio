@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
@@ -23,12 +23,30 @@ import { Cmt, Fn } from "@/components/ui/IdeSyntax";
 import { MotionProvider } from "@/components/ui/Animations";
 import { ThemeProvider } from "@/components/ide/ThemeProvider";
 
+function getSectionOffset(section: HTMLElement, container: HTMLElement) {
+  return (
+    section.getBoundingClientRect().top -
+    container.getBoundingClientRect().top +
+    container.scrollTop
+  );
+}
+
 export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null);
   const [lineCount, setLineCount] = useState(120);
   const [activeSection, setActiveSection] = useState("about");
   const [activeTab, setActiveTab] = useState<AppTab>("portfolio");
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  const scrollToSection = useCallback((id: string) => {
+    const container = contentRef.current;
+    const section = document.getElementById(id);
+    if (!container || !section) return;
+
+    const top = getSectionOffset(section, container) - 16;
+    container.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    setActiveSection(id);
+  }, []);
 
   useEffect(() => {
     if (activeTab !== "portfolio") return;
@@ -41,19 +59,14 @@ export default function Home() {
       setLineCount(Math.max(Math.ceil(height / 20), 80));
     };
 
-    const getSectionTop = (section: HTMLElement) =>
-      section.getBoundingClientRect().top -
-      container.getBoundingClientRect().top +
-      container.scrollTop;
-
     const updateActiveSection = () => {
-      const marker = container.scrollTop + (window.innerWidth < 1024 ? 132 : 96);
+      const marker = container.scrollTop + container.clientHeight * 0.28;
 
       let current = SECTION_IDS[0];
       for (const id of SECTION_IDS) {
         const section = document.getElementById(id);
         if (!section) continue;
-        if (getSectionTop(section) <= marker) {
+        if (getSectionOffset(section, container) <= marker) {
           current = id;
         }
       }
@@ -68,8 +81,13 @@ export default function Home() {
       updateActiveSection();
     };
 
+    const onResize = () => {
+      updateLines();
+      updateActiveSection();
+    };
+
     container.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", updateLines);
+    window.addEventListener("resize", onResize);
 
     const resizeObserver = new ResizeObserver(() => {
       updateLines();
@@ -79,7 +97,7 @@ export default function Home() {
 
     return () => {
       container.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", updateLines);
+      window.removeEventListener("resize", onResize);
       resizeObserver.disconnect();
     };
   }, [activeTab]);
@@ -99,7 +117,10 @@ export default function Home() {
           />
 
           {activeTab === "portfolio" && (
-            <MobileSectionNav activeSection={activeSection} />
+            <MobileSectionNav
+              activeSection={activeSection}
+              onSectionClick={scrollToSection}
+            />
           )}
 
           <div className="flex min-h-0 flex-1">
@@ -157,7 +178,10 @@ export default function Home() {
             </div>
 
             {activeTab === "portfolio" && (
-              <IndexPanel activeSection={activeSection} />
+              <IndexPanel
+                activeSection={activeSection}
+                onSectionClick={scrollToSection}
+              />
             )}
           </div>
         </div>

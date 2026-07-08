@@ -322,8 +322,10 @@ export function MobileSidebarDrawer({
 
 export function MobileSectionNav({
   activeSection,
+  onSectionClick,
 }: {
   activeSection?: string;
+  onSectionClick?: (id: string) => void;
 }) {
   return (
     <nav className="shrink-0 border-b border-ide-border bg-ide-topbar lg:hidden">
@@ -337,6 +339,12 @@ export function MobileSectionNav({
             <a
               key={link.id}
               href={`#${link.id}`}
+              onClick={(e) => {
+                if (onSectionClick) {
+                  e.preventDefault();
+                  onSectionClick(link.id);
+                }
+              }}
               className={`shrink-0 rounded border px-2.5 py-1 font-mono text-[10px] transition sm:text-[11px] ${
                 active
                   ? "border-ide-accent bg-ide-tab-bg text-ide-property"
@@ -360,7 +368,13 @@ export function Sidebar() {
   );
 }
 
-export function IndexPanel({ activeSection }: { activeSection?: string }) {
+export function IndexPanel({
+  activeSection,
+  onSectionClick,
+}: {
+  activeSection?: string;
+  onSectionClick?: (id: string) => void;
+}) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -381,11 +395,17 @@ export function IndexPanel({ activeSection }: { activeSection?: string }) {
             <a
               key={link.id}
               href={`#${link.id}`}
+              onClick={(e) => {
+                if (onSectionClick) {
+                  e.preventDefault();
+                  onSectionClick(link.id);
+                }
+              }}
               className="relative pl-3 font-mono text-[12px] transition"
             >
               {active && (
                 <motion.div
-                  layoutId="index-active"
+                  layoutId="index-active-indicator"
                   className="absolute left-0 top-0 h-full w-[2px] bg-ide-property"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
