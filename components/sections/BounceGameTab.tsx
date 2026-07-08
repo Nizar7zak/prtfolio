@@ -13,7 +13,7 @@ const GAME_ORIGINS = [
 
 const GAME_URL =
   process.env.NEXT_PUBLIC_BOUNCEGAME_URL ??
-  "https://bounce-game-roan.vercel.app/?embed=1";
+  "https://bounce-game-roan.vercel.app/?embed=1&v=3";
 
 interface LeaderboardEntry {
   id: string;
