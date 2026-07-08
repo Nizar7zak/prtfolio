@@ -1,0 +1,42 @@
+"use client";
+
+import { HtmlComment, Stagger, StaggerItem } from "@/components/ui/Animations";
+import { Kw, SectionHeading } from "@/components/ui/IdeSyntax";
+import { ProjectCard } from "@/components/ui/ProjectCard";
+import { projects } from "@/data/portfolio";
+
+export function ProjectsSection() {
+  return (
+    <section id="projects" className="mb-16 scroll-mt-16 py-4">
+      <HtmlComment label="Projects section" />
+      <div className="mb-6 flex items-center justify-between">
+        <SectionHeading className="mb-0">Projects</SectionHeading>
+        <a
+          href="https://github.com/Nizar7zak"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded bg-white px-4 py-2 font-mono text-[12px] font-medium text-black transition hover:bg-ide-text"
+        >
+          <Kw>View</Kw> More
+        </a>
+      </div>
+
+      <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project) => (
+          <StaggerItem key={project.id}>
+            <ProjectCard
+              name={project.name}
+              platform={project.platform}
+              liveUrl={project.liveUrl}
+              githubUrl={project.githubUrl}
+              image={project.image}
+              previewImage={project.previewImage}
+              previewMode={project.previewMode}
+              iframePreview={project.iframePreview}
+            />
+          </StaggerItem>
+        ))}
+      </Stagger>
+    </section>
+  );
+}
