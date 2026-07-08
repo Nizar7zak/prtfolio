@@ -242,18 +242,17 @@ export const experiences: Experience[] = [
   },
 ];
 
-// Projects — order matches resume/README; GameHub featured first
+// Projects — resume order with BounceGame first and GameHub last
 export const projects: Project[] = [
   {
-    id: "gamehub",
-    name: "GameHub",
-    liveUrl: "https://game-hub-zeta-lilac-15.vercel.app",
-    githubUrl: "https://github.com/Nizar7zak/gameHub",
-    description:
-      "Modern responsive gaming web app. Pulls from RAWG API to showcase popular, upcoming, and new video games.",
-    platform: "TypeScript",
+    id: "bouncegame",
+    name: "BounceGame",
+    liveUrl: "https://bounce-game-roan.vercel.app",
+    githubUrl: "https://github.com/Nizar7zak/BounceGame",
+    description: "Interactive bounce game web app.",
+    platform: "Three.js",
     year: { start: 2023, end: 2023 },
-    image: "/assets/cards/gamehub.png",
+    image: "/assets/cards/bouncegame.png",
   },
   {
     id: "emergency-committee",
@@ -368,14 +367,15 @@ export const projects: Project[] = [
     iframePreview: false,
   },
   {
-    id: "bouncegame",
-    name: "BounceGame",
-    liveUrl: "https://bounce-game-roan.vercel.app",
-    githubUrl: "https://github.com/Nizar7zak/BounceGame",
-    description: "Interactive bounce game web app.",
-    platform: "Three.js",
+    id: "gamehub",
+    name: "GameHub",
+    liveUrl: "https://game-hub-zeta-lilac-15.vercel.app",
+    githubUrl: "https://github.com/Nizar7zak/gameHub",
+    description:
+      "Modern responsive gaming web app. Pulls from RAWG API to showcase popular, upcoming, and new video games.",
+    platform: "TypeScript",
     year: { start: 2023, end: 2023 },
-    image: "/assets/cards/bouncegame.png",
+    image: "/assets/cards/gamehub.png",
   },
 ];
 
