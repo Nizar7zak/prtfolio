@@ -7,6 +7,7 @@ import {
   FiPhone,
   FiMapPin,
   FiDownload,
+  FiTarget,
 } from "react-icons/fi";
 import { MdGTranslate } from "react-icons/md";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
@@ -65,13 +66,17 @@ export function TopBar({
         <button
           type="button"
           onClick={() => onTabChange("bouncegame")}
-          className={`flex h-full items-center px-4 transition ${
+          className={`relative flex h-full items-center gap-2 px-4 transition ${
             activeTab === "bouncegame"
               ? "border-b-2 border-ide-text text-ide-text"
               : "text-ide-syntax-comment hover:text-ide-text"
           }`}
         >
-          <Ty>BounceGame</Ty>
+          <FiTarget className="h-3.5 w-3.5 shrink-0 text-ide-type" aria-hidden />
+          <Str>challenge.nezar</Str>
+          {activeTab === "bouncegame" && (
+            <span className="text-ide-syntax-comment hover:text-ide-text">×</span>
+          )}
         </button>
       </div>
 
@@ -96,7 +101,7 @@ export function TopBar({
 
 export function Sidebar() {
   return (
-    <aside className="hidden h-full w-[260px] shrink-0 flex-col justify-between border-r border-ide-border bg-ide-sidebar font-mono md:flex">
+    <aside className="hidden w-[220px] shrink-0 flex-col justify-between border-r border-ide-border bg-ide-sidebar font-mono md:flex">
       {/* Top block */}
       <div className="flex flex-col gap-8 px-5 pt-6">
         {/* Profile */}
@@ -230,7 +235,7 @@ export function IndexPanel({ activeSection }: { activeSection?: string }) {
   if (!mounted) return null;
 
   return (
-    <aside className="hidden w-[160px] shrink-0 flex-col border-l border-ide-border bg-ide-topbar p-6 lg:flex">
+    <aside className="hidden w-[130px] shrink-0 flex-col border-l border-ide-border bg-ide-topbar p-4 xl:w-[150px] xl:p-5 lg:flex">
       <p className="mb-4 font-mono text-[12px] text-ide-syntax-comment">\\ Index</p>
       <nav className="relative flex flex-col gap-3">
         {INDEX_LINKS.map((link) => {

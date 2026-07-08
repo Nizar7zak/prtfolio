@@ -109,11 +109,11 @@ export default function Home() {
                 className={`editor-scroll min-w-0 flex-1 ${
                   activeTab === "bouncegame"
                     ? "flex flex-col overflow-hidden p-4 md:p-6"
-                    : "overflow-y-auto px-6 py-8 md:px-10"
+                    : "overflow-y-auto px-4 py-8 md:px-6"
                 }`}
               >
                 {activeTab === "portfolio" ? (
-                  <div className="relative mx-auto max-w-3xl">
+                  <div className="relative w-full max-w-5xl">
                     <HtmlComment label="About me section" />
                     <HeroSection />
                     <ExperienceSection />

@@ -16,7 +16,7 @@ export function HeroSection() {
         viewport={{ once: true, margin: "-64px" }}
         transition={{ duration: 0.7 }}
       >
-        <h1 className="mb-6 max-w-3xl font-mono text-[28px] font-bold leading-tight md:text-[36px]">
+        <h1 className="mb-6 max-w-4xl font-mono text-[28px] font-bold leading-tight md:text-[36px]">
           <span className="text-ide-keyword">
             <ScrambleText>Turning</ScrambleText>
           </span>{" "}
@@ -32,7 +32,7 @@ export function HeroSection() {
         </h1>
 
         <Reveal delay={0.3}>
-          <p className="mb-8 max-w-2xl font-mono text-[13px] leading-relaxed text-ide-text">
+          <p className="mb-8 max-w-3xl font-mono text-[13px] leading-relaxed text-ide-text">
             <SemanticText tokens={aboutBio} />
           </p>
         </Reveal>

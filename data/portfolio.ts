@@ -242,8 +242,19 @@ export const experiences: Experience[] = [
   },
 ];
 
-// Projects — card images from github.com/Nizar7zak/Nizar7zak assets/cards
+// Projects — order matches resume/README; GameHub featured first
 export const projects: Project[] = [
+  {
+    id: "gamehub",
+    name: "GameHub",
+    liveUrl: "https://game-hub-zeta-lilac-15.vercel.app",
+    githubUrl: "https://github.com/Nizar7zak/gameHub",
+    description:
+      "Modern responsive gaming web app. Pulls from RAWG API to showcase popular, upcoming, and new video games.",
+    platform: "TypeScript",
+    year: { start: 2023, end: 2023 },
+    image: "/assets/cards/gamehub.png",
+  },
   {
     id: "emergency-committee",
     name: "Emergency Committee",
@@ -365,17 +376,6 @@ export const projects: Project[] = [
     platform: "Three.js",
     year: { start: 2023, end: 2023 },
     image: "/assets/cards/bouncegame.png",
-  },
-  {
-    id: "gamehub",
-    name: "GameHub",
-    liveUrl: "https://game-hub-zeta-lilac-15.vercel.app",
-    githubUrl: "https://github.com/Nizar7zak/gameHub",
-    description:
-      "Modern responsive gaming web app. Pulls from RAWG API to showcase popular, upcoming, and new video games.",
-    platform: "TypeScript",
-    year: { start: 2023, end: 2023 },
-    image: "/assets/cards/gamehub.png",
   },
 ];
 
