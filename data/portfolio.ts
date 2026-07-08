@@ -242,7 +242,7 @@ export const experiences: Experience[] = [
   },
 ];
 
-// Projects — resume order with BounceGame first and GameHub last
+// Projects — BounceGame first, then Emergency Committee → Herfa → 4co → AZR → Cons → iMinds → …
 export const projects: Project[] = [
   {
     id: "bouncegame",
@@ -288,13 +288,15 @@ export const projects: Project[] = [
     image: "/assets/cards/4co.png",
   },
   {
-    id: "iminds",
-    name: "iMinds",
-    liveUrl: "https://www.iminds.sa",
-    description: "Saudi business marketing site built on Framer.",
-    platform: "Framer",
+    id: "azr",
+    name: "AZR",
+    liveUrl: "https://azr-brown.vercel.app",
+    githubUrl: "https://github.com/Nizar7zak/azr",
+    description:
+      "Corporate website with contact forms, Google Maps integration, and admin dashboard. Built with Next.js.",
+    platform: "Next.js",
     year: { start: 2024, end: 2024 },
-    image: "/assets/cards/iminds.png",
+    image: "/assets/cards/azr.png",
   },
   {
     id: "cons",
@@ -306,15 +308,13 @@ export const projects: Project[] = [
     image: "/assets/cards/cons.png",
   },
   {
-    id: "azr",
-    name: "AZR",
-    liveUrl: "https://azr-brown.vercel.app",
-    githubUrl: "https://github.com/Nizar7zak/azr",
-    description:
-      "Corporate website with contact forms, Google Maps integration, and admin dashboard. Built with Next.js.",
-    platform: "Next.js",
+    id: "iminds",
+    name: "iMinds",
+    liveUrl: "https://www.iminds.sa",
+    description: "Saudi business marketing site built on Framer.",
+    platform: "Framer",
     year: { start: 2024, end: 2024 },
-    image: "/assets/cards/azr.png",
+    image: "/assets/cards/iminds.png",
   },
   {
     id: "saqeefa",
