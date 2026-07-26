@@ -7,7 +7,6 @@ import {
   FiPhone,
   FiMapPin,
   FiDownload,
-  FiTarget,
   FiMenu,
   FiX,
 } from "react-icons/fi";
@@ -38,8 +37,6 @@ export function Clock() {
 
   return <span className="text-ide-property">My time: {time || "--:-- --"}</span>;
 }
-
-export type AppTab = "portfolio" | "bouncegame";
 
 const INDEX_LINKS = [
   { id: "about", label: "About me" },
@@ -172,15 +169,7 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
   );
 }
 
-export function TopBar({
-  activeTab,
-  onTabChange,
-  onMenuOpen,
-}: {
-  activeTab: AppTab;
-  onTabChange: (tab: AppTab) => void;
-  onMenuOpen?: () => void;
-}) {
+export function TopBar({ onMenuOpen }: { onMenuOpen?: () => void }) {
   return (
     <div className="safe-top sticky top-0 z-50 flex h-11 min-w-0 items-center justify-between gap-2 border-b border-ide-border bg-ide-topbar px-2 font-mono text-[13px] sm:px-4">
       <div className="flex h-full min-w-0 items-center gap-1 sm:gap-0">
@@ -196,47 +185,10 @@ export function TopBar({
         )}
 
         <div className="flex h-full min-w-0 items-center overflow-x-auto">
-          <button
-            type="button"
-            onClick={() => onTabChange("portfolio")}
-            className={`relative flex h-full shrink-0 items-center gap-1.5 px-2.5 transition sm:gap-2 sm:px-4 ${
-              activeTab === "portfolio"
-                ? "border-b-2 border-ide-text"
-                : "text-ide-syntax-comment hover:text-ide-text"
-            }`}
-          >
+          <div className="relative flex h-full shrink-0 items-center gap-1.5 border-b-2 border-ide-text px-2.5 sm:gap-2 sm:px-4">
             <Str>nizar.info</Str>
-            {activeTab === "portfolio" && (
-              <span className="hidden text-ide-syntax-comment hover:text-ide-text sm:inline">
-                ×
-              </span>
-            )}
-          </button>
-          <button
-            type="button"
-            onClick={() => onTabChange("bouncegame")}
-            className={`relative flex h-full shrink-0 items-center gap-1.5 px-2.5 transition sm:gap-2 sm:px-4 ${
-              activeTab === "bouncegame"
-                ? "border-b-2 border-ide-text text-ide-text"
-                : "text-ide-syntax-comment hover:text-ide-text"
-            }`}
-          >
-            <FiTarget
-              className="h-3.5 w-3.5 shrink-0 text-ide-type"
-              aria-hidden
-            />
-            <span className="sm:hidden">
-              <Str>game</Str>
-            </span>
-            <span className="hidden sm:inline">
-              <Str>challenge.nezar</Str>
-            </span>
-            {activeTab === "bouncegame" && (
-              <span className="hidden text-ide-syntax-comment hover:text-ide-text sm:inline">
-                ×
-              </span>
-            )}
-          </button>
+            <span className="hidden text-ide-syntax-comment sm:inline">×</span>
+          </div>
         </div>
       </div>
 

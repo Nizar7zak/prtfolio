@@ -8,7 +8,6 @@ import { RecommendationsSection } from "@/components/sections/RecommendationsSec
 import { EducationSection } from "@/components/sections/EducationSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { GitHubPulseSection } from "@/components/sections/GitHubPulseSection";
-import { BounceGameTab } from "@/components/sections/BounceGameTab";
 import {
   TopBar,
   Sidebar,
@@ -16,7 +15,6 @@ import {
   MobileSidebarDrawer,
   MobileSectionNav,
   SECTION_IDS,
-  type AppTab,
 } from "@/components/ide/Shell";
 import { HtmlComment } from "@/components/ui/Animations";
 import { Cmt, Fn } from "@/components/ui/IdeSyntax";
@@ -35,7 +33,6 @@ export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null);
   const [lineCount, setLineCount] = useState(120);
   const [activeSection, setActiveSection] = useState("about");
-  const [activeTab, setActiveTab] = useState<AppTab>("portfolio");
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const scrollToSection = useCallback((id: string) => {
@@ -49,8 +46,6 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (activeTab !== "portfolio") return;
-
     const container = contentRef.current;
     if (!container) return;
 
@@ -100,89 +95,71 @@ export default function Home() {
       window.removeEventListener("resize", onResize);
       resizeObserver.disconnect();
     };
-  }, [activeTab]);
+  }, []);
 
   return (
     <ThemeProvider>
       <MotionProvider>
         <div className="flex h-[100dvh] flex-col overflow-hidden bg-ide-bg font-mono text-ide-text">
-          <TopBar
-            activeTab={activeTab}
-            onTabChange={setActiveTab}
-            onMenuOpen={() => setMobileNavOpen(true)}
-          />
+          <TopBar onMenuOpen={() => setMobileNavOpen(true)} />
           <MobileSidebarDrawer
             open={mobileNavOpen}
             onClose={() => setMobileNavOpen(false)}
           />
 
-          {activeTab === "portfolio" && (
-            <MobileSectionNav
-              activeSection={activeSection}
-              onSectionClick={scrollToSection}
-            />
-          )}
+          <MobileSectionNav
+            activeSection={activeSection}
+            onSectionClick={scrollToSection}
+          />
 
           <div className="flex min-h-0 flex-1">
             <Sidebar />
 
             <div className="flex min-w-0 flex-1 overflow-hidden">
-              {activeTab === "portfolio" && (
-                <div
-                  aria-hidden
-                  className="hidden w-12 shrink-0 select-none overflow-hidden border-r border-ide-border bg-ide-topbar py-8 text-right text-[11px] leading-5 text-ide-line-num sm:block"
-                >
-                  {Array.from({ length: lineCount }, (_, i) => (
-                    <div key={i} className="pr-3">
-                      {i + 1}
-                    </div>
-                  ))}
-                </div>
-              )}
+              <div
+                aria-hidden
+                className="hidden w-12 shrink-0 select-none overflow-hidden border-r border-ide-border bg-ide-topbar py-8 text-right text-[11px] leading-5 text-ide-line-num sm:block"
+              >
+                {Array.from({ length: lineCount }, (_, i) => (
+                  <div key={i} className="pr-3">
+                    {i + 1}
+                  </div>
+                ))}
+              </div>
 
               <div
                 ref={contentRef}
-                className={`editor-scroll min-w-0 flex-1 ${
-                  activeTab === "bouncegame"
-                    ? "flex flex-col overflow-hidden p-4 md:p-6"
-                    : "overflow-y-auto px-3 py-6 sm:px-4 sm:py-8 md:px-6"
-                }`}
+                className="editor-scroll min-w-0 flex-1 overflow-y-auto px-3 py-6 sm:px-4 sm:py-8 md:px-6"
               >
-                {activeTab === "portfolio" ? (
-                  <div className="relative w-full max-w-5xl">
-                    <HtmlComment label="About me section" />
-                    <HeroSection />
-                    <ExperienceSection />
-                    <ProjectsSection />
-                    <RecommendationsSection />
-                    <EducationSection />
-                    <SkillsSection />
-                    <GitHubPulseSection />
+                <div className="relative w-full max-w-5xl">
+                  <HtmlComment label="About me section" />
+                  <HeroSection />
+                  <ExperienceSection />
+                  <ProjectsSection />
+                  <RecommendationsSection />
+                  <EducationSection />
+                  <SkillsSection />
+                  <GitHubPulseSection />
 
-                    <div className="mt-16 border-t border-ide-border pt-8 text-center font-mono text-[11px]">
-                      <p>
-                        <Cmt>
-                          Built with curiosity · deployed with care · refactored
-                          until it feels right
-                        </Cmt>
-                      </p>
-                      <p className="mt-2 text-ide-comment">
-                        © 2026 <Fn>Nezar Zakout</Fn>
-                      </p>
-                    </div>
+                  <div className="mt-16 border-t border-ide-border pt-8 text-center font-mono text-[11px]">
+                    <p>
+                      <Cmt>
+                        Built with curiosity · deployed with care · refactored
+                        until it feels right
+                      </Cmt>
+                    </p>
+                    <p className="mt-2 text-ide-comment">
+                      © 2026 <Fn>Nezar Zakout</Fn>
+                    </p>
                   </div>
-                ) : (
-                  <BounceGameTab />
-                )}
+                </div>
               </div>
             </div>
 
-            {activeTab === "portfolio" && (
-              <IndexPanel
-                activeSection={activeSection}
-                onSectionClick={scrollToSection}
-              />
-            )}
+            <IndexPanel
+              activeSection={activeSection}
+              onSectionClick={scrollToSection}
+            />
           </div>
         </div>
       </MotionProvider>
