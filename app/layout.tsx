@@ -46,8 +46,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="flex min-h-screen flex-col bg-ide-bg text-ide-text">
+    <html
+      lang="en"
+      className={`${inter.variable} ${jetbrainsMono.variable} overflow-x-hidden`}
+    >
+      <body className="flex min-h-screen max-w-full flex-col overflow-x-hidden bg-ide-bg text-ide-text">
         {children}
       </body>
     </html>

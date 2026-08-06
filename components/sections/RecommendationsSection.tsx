@@ -47,11 +47,11 @@ export function RecommendationsSection() {
           return (
             <StaggerItem key={rec.name}>
               <motion.div
-                className={`flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:gap-6 md:gap-8 ${
+                className={`flex max-w-full flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:gap-6 md:gap-8 ${
                   photoLeft ? "sm:flex-row" : "sm:flex-row-reverse"
                 }`}
-                initial={{ opacity: 0, x: photoLeft ? -40 : 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-64px" }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >

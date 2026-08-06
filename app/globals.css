@@ -70,12 +70,16 @@
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
   @apply bg-ide-bg text-ide-text font-mono;
   background-color: var(--ide-bg);
   color: var(--ide-text);
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 .safe-top {

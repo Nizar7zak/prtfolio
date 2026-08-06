@@ -38,15 +38,17 @@ export function ProjectCard({
     >
       <div className="relative h-44 w-full overflow-hidden bg-ide-topbar">
         {showIframe ? (
-          <div className="pointer-events-none absolute left-0 top-0 h-[400%] w-[400%] origin-top-left scale-[0.25]">
-            <iframe
-              src={liveUrl}
-              title={`${name} live preview`}
-              loading="lazy"
-              sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-              referrerPolicy="no-referrer"
-              className="h-full w-full border-0 bg-white"
-            />
+          <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            <div className="h-[400%] w-[400%] max-w-none origin-top-left scale-[0.25]">
+              <iframe
+                src={liveUrl}
+                title={`${name} live preview`}
+                loading="lazy"
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                referrerPolicy="no-referrer"
+                className="h-full w-full border-0 bg-white"
+              />
+            </div>
           </div>
         ) : showLogo ? (
           <div className="flex h-full items-center justify-center p-8">

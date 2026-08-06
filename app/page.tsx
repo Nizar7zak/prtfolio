@@ -100,7 +100,7 @@ export default function Home() {
   return (
     <ThemeProvider>
       <MotionProvider>
-        <div className="flex h-[100dvh] flex-col overflow-hidden bg-ide-bg font-mono text-ide-text">
+        <div className="flex h-[100dvh] w-full max-w-full flex-col overflow-x-hidden overflow-y-hidden bg-ide-bg font-mono text-ide-text">
           <TopBar onMenuOpen={() => setMobileNavOpen(true)} />
           <MobileSidebarDrawer
             open={mobileNavOpen}
@@ -112,7 +112,7 @@ export default function Home() {
             onSectionClick={scrollToSection}
           />
 
-          <div className="flex min-h-0 flex-1">
+          <div className="flex min-h-0 min-w-0 flex-1 overflow-x-hidden">
             <Sidebar />
 
             <div className="flex min-w-0 flex-1 overflow-hidden">
@@ -129,9 +129,9 @@ export default function Home() {
 
               <div
                 ref={contentRef}
-                className="editor-scroll min-w-0 flex-1 overflow-y-auto px-3 py-6 sm:px-4 sm:py-8 md:px-6"
+                className="editor-scroll min-w-0 flex-1 overflow-y-auto overflow-x-hidden px-3 py-6 sm:px-4 sm:py-8 md:px-6"
               >
-                <div className="relative w-full max-w-5xl">
+                <div className="relative w-full max-w-5xl min-w-0 break-words">
                   <HtmlComment label="About me section" />
                   <HeroSection />
                   <ExperienceSection />

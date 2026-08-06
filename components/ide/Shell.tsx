@@ -171,7 +171,7 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
 
 export function TopBar({ onMenuOpen }: { onMenuOpen?: () => void }) {
   return (
-    <div className="safe-top sticky top-0 z-50 flex h-11 min-w-0 items-center justify-between gap-2 border-b border-ide-border bg-ide-topbar px-2 font-mono text-[13px] sm:px-4">
+    <div className="safe-top sticky top-0 z-50 flex h-11 min-w-0 items-center justify-between gap-2 overflow-x-hidden border-b border-ide-border bg-ide-topbar px-2 font-mono text-[13px] sm:px-4">
       <div className="flex h-full min-w-0 items-center gap-1 sm:gap-0">
         {onMenuOpen && (
           <button
@@ -280,8 +280,8 @@ export function MobileSectionNav({
   onSectionClick?: (id: string) => void;
 }) {
   return (
-    <nav className="shrink-0 border-b border-ide-border bg-ide-topbar lg:hidden">
-      <div className="editor-scroll flex gap-1 overflow-x-auto px-2 py-2 sm:px-3">
+    <nav className="min-w-0 shrink-0 overflow-x-hidden border-b border-ide-border bg-ide-topbar lg:hidden">
+      <div className="editor-scroll flex max-w-full gap-1 overflow-x-auto overscroll-x-contain px-2 py-2 sm:px-3">
         <span className="mr-1 shrink-0 self-center px-1 font-mono text-[10px] text-ide-syntax-comment">
           \\ Index
         </span>

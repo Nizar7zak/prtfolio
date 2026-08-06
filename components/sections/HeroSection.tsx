@@ -16,7 +16,7 @@ export function HeroSection() {
         viewport={{ once: true, margin: "-64px" }}
         transition={{ duration: 0.7 }}
       >
-        <h1 className="mb-6 max-w-4xl font-mono text-[22px] font-bold leading-tight sm:text-[28px] md:text-[36px]">
+        <h1 className="mb-6 max-w-4xl break-words font-mono text-[22px] font-bold leading-tight sm:text-[28px] md:text-[36px]">
           <span className="text-ide-keyword">
             <ScrambleText>Turning</ScrambleText>
           </span>{" "}

@@ -123,13 +123,13 @@ export function SkillsSection() {
 
       <SectionHeading className="mb-6">My Skills</SectionHeading>
 
-      <Stagger className="grid grid-cols-2 border border-ide-border sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7">
+      <Stagger className="grid max-w-full grid-cols-2 overflow-hidden border border-ide-border sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7">
         {skillCards.map((skill) => {
           const Icon = ICONS[skill.icon];
           return (
-            <StaggerItem key={skill.name}>
+            <StaggerItem key={skill.name} className="min-w-0">
               <motion.div
-                className="grid min-h-[110px] grid-rows-[28px_1fr_28px] border-b border-r border-ide-border bg-ide-bg sm:min-h-[120px]"
+                className="grid min-h-[110px] min-w-0 grid-rows-[28px_1fr_28px] border-b border-r border-ide-border bg-ide-bg sm:min-h-[120px]"
                 whileHover={{ scale: 1.02, backgroundColor: "var(--ide-card-hover)" }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
