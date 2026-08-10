@@ -99,7 +99,7 @@ export const personalInfo = {
   phone: "+201004834232",
   phoneDisplay: "+20 100 483 4232",
   location: "Ismailia, Egypt",
-  languages: ["English", "Deutsche", "Arabic"] as const,
+  languages: ["English", "Deutsch", "Arabic"] as const,
   github: "https://github.com/Nizar7zak",
   githubUsername: "Nizar7zak",
   linkedin: "https://www.linkedin.com/in/nezar-zakout",
