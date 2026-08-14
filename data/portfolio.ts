@@ -317,17 +317,6 @@ export const projects: Project[] = [
     image: "/assets/cards/iminds.png",
   },
   {
-    id: "saqeefa",
-    name: "Saqeefa",
-    liveUrl: "https://saqeefa-ch26.com",
-    githubUrl: "https://github.com/Nizar7zak/saqeefa-ch26",
-    description:
-      "Saqeefa Summer Festival 2026 — Chapter 26 B2B sponsorship landing page and lead capture.",
-    platform: "Next.js",
-    year: { start: 2025, end: 2025 },
-    image: "/assets/cards/saqeefa.png",
-  },
-  {
     id: "loi",
     name: "LOI",
     liveUrl: "https://www.loi.sa",
